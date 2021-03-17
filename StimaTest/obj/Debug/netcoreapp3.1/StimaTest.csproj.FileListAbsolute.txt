@@ -1,0 +1,12 @@
+/Users/shifa/Desktop/StimaTest/StimaTest/bin/Debug/netcoreapp3.1/StimaTest.deps.json
+/Users/shifa/Desktop/StimaTest/StimaTest/bin/Debug/netcoreapp3.1/StimaTest.runtimeconfig.json
+/Users/shifa/Desktop/StimaTest/StimaTest/bin/Debug/netcoreapp3.1/StimaTest.runtimeconfig.dev.json
+/Users/shifa/Desktop/StimaTest/StimaTest/bin/Debug/netcoreapp3.1/StimaTest.dll
+/Users/shifa/Desktop/StimaTest/StimaTest/bin/Debug/netcoreapp3.1/StimaTest.pdb
+/Users/shifa/Desktop/StimaTest/StimaTest/obj/Debug/netcoreapp3.1/StimaTest.csprojAssemblyReference.cache
+/Users/shifa/Desktop/StimaTest/StimaTest/obj/Debug/netcoreapp3.1/StimaTest.AssemblyInfoInputs.cache
+/Users/shifa/Desktop/StimaTest/StimaTest/obj/Debug/netcoreapp3.1/StimaTest.AssemblyInfo.cs
+/Users/shifa/Desktop/StimaTest/StimaTest/obj/Debug/netcoreapp3.1/StimaTest.csproj.CoreCompileInputs.cache
+/Users/shifa/Desktop/StimaTest/StimaTest/obj/Debug/netcoreapp3.1/StimaTest.dll
+/Users/shifa/Desktop/StimaTest/StimaTest/obj/Debug/netcoreapp3.1/StimaTest.pdb
+/Users/shifa/Desktop/StimaTest/StimaTest/obj/Debug/netcoreapp3.1/StimaTest.genruntimeconfig.cache
