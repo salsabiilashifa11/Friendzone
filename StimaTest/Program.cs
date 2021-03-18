@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using GraphMain;
 using QueueMain;
 using StackMain;
+using BFSMain;
+using DFSMain;
 
 namespace Main
 {
@@ -18,7 +20,7 @@ namespace Main
             {
                 g.InsertNode(ids[i]);
             }
-
+            
             g.InsertEdge("C1", "C2"); //Artinya: menambahkan busur berarah dari C1 KE C2
             g.InsertEdge("C1", "C5");
             g.InsertEdge("C2", "C5");
@@ -31,7 +33,18 @@ namespace Main
             g.InsertEdge("C4", "C3");
             g.InsertEdge("C5", "C4");
             g.InsertEdge("C5", "C2");
-            g.DeleteNode("C1");
+            g.InsertEdge("C5", "C1");
+            g.InsertEdge("C2", "C1");
+            //g.DeleteNode("C1");
+
+            //BFS
+            BFS A = new BFS();
+            A.SolverBFS("C5", "C3", g, ids);
+
+            //DFS
+            DFS B = new DFS();
+            B.SolverDFS("C5", "C3", g, ids);
+
 
             Node cP = g.First;
             while (cP != null)
@@ -39,6 +52,7 @@ namespace Main
                 Console.WriteLine("Terdapat {0} busur terhubung ke node dengan Id = {1}", cP.NPred, cP.Id);
                 cP = cP.Next;
             }
+
 
             //---------------------- Queue Driver ------------------------
             Queue q = new Queue();
