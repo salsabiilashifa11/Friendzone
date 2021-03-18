@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using GraphMain;
+using QueueMain;
+using StackMain;
 
 namespace Main
 {
-    class DriverGraph
+    class Program
     {
         static void Main(string[] args)
         {
-
+            //---------------------- Graph Driver ------------------------
             string[] ids = new string[5] { "C1", "C2", "C3", "C4", "C5" };
 
             Graph g = new Graph("C1");
@@ -38,7 +40,42 @@ namespace Main
                 cP = cP.Next;
             }
 
+            //---------------------- Queue Driver ------------------------
+            Queue q = new Queue();
+
+            q.Enqueue(g.SearchNode("C2"));
+            q.Enqueue(g.SearchNode("C3"));
+            q.Dequeue();
+            q.Enqueue(g.SearchNode("C4"));
+            q.Dequeue();
+
+            if (q.IsEmpty())
+            {
+                Console.WriteLine("Queue is empty");
+            } else
+            {
+                Console.WriteLine("Head Id: {0}", q.InfoHead.Id);
+            }
+
+            //---------------------- Stack Driver ------------------------
+            Stack s = new Stack();
+
+            s.Push(g.SearchNode("C2"));
+            s.Push(g.SearchNode("C3"));
+            s.Push(g.SearchNode("C4"));
+            s.Pop();
+
+            if (q.IsEmpty())
+            {
+                Console.WriteLine("Queue is empty");
+            }
+            else
+            {
+                Console.WriteLine("Head Id: {0}", s.InfoTop.Id);
+            }
+
             Console.WriteLine("Hello World!");
+
 
         }
     }
