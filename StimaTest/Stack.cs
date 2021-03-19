@@ -1,7 +1,7 @@
 ﻿using System;
-using GraphMain;
+using StimaTest;
 
-namespace StackMain
+namespace StimaTest
 {
     public class Stack
     {

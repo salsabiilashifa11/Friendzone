@@ -1,11 +1,10 @@
 ﻿using System;
-using QueueMain;
-using GraphMain;
+using StimaTest;
 using System.Collections.Generic;
 
-namespace BFSMain
+namespace StimaTest
 {
-    public class BFS
+    public class ExploreFriendsBFS
     {
         public List<string> SolverBFS(string X, string Y, Graph G, string[] arrOfGraph)
         {

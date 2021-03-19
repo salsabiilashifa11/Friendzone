@@ -1,7 +1,7 @@
 ﻿using System;
-using GraphMain;
+using StimaTest;
 
-namespace QueueMain
+namespace StimaTest
 {
     public class Queue
     {
@@ -78,7 +78,7 @@ namespace QueueMain
             }
         }
 
-        public void Dequeue()
+        public Node Dequeue()
         {
             ElmtQueue P;
 
@@ -90,6 +90,7 @@ namespace QueueMain
             }
 
             P.Next = null;
+            return P.Info;
         }
     }
 

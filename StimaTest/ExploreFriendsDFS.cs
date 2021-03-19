@@ -1,11 +1,10 @@
 ﻿using System;
-using StackMain;
-using GraphMain;
+using StimaTest;
 using System.Collections.Generic;
 
-namespace DFSMain
+namespace StimaTest
 {
-    public class DFS
+    public class ExploreFriendsDFS
     {
         public List<string> SolverDFS(string X, string Y, Graph G, string[] arrOfGraph)
         {

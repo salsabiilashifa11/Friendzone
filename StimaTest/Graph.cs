@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GraphMain
+namespace StimaTest
 {
     public class Graph
     {
@@ -152,7 +152,6 @@ namespace GraphMain
         private string id;
         private Node next;
         private SuccNode trail;
-        public bool visited;
 
         //Constructors
         public Node(string _Id)
@@ -161,7 +160,6 @@ namespace GraphMain
             this.nPred = 0;
             this.next = null;
             this.trail = null;
-            this.visited = false;
         }
 
         //Getter and Setter

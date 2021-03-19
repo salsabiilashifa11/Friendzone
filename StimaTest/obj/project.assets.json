@@ -8,19 +8,19 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "/Users/irvin/.nuget/packages/": {}
+    "/Users/shifa/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/irvin/Desktop/Friendzone/StimaTest/StimaTest.csproj",
+      "projectUniqueName": "/Users/shifa/Desktop/StimaTest/StimaTest/StimaTest.csproj",
       "projectName": "StimaTest",
-      "projectPath": "/Users/irvin/Desktop/Friendzone/StimaTest/StimaTest.csproj",
-      "packagesPath": "/Users/irvin/.nuget/packages/",
-      "outputPath": "/Users/irvin/Desktop/Friendzone/StimaTest/obj/",
+      "projectPath": "/Users/shifa/Desktop/StimaTest/StimaTest/StimaTest.csproj",
+      "packagesPath": "/Users/shifa/.nuget/packages/",
+      "outputPath": "/Users/shifa/Desktop/StimaTest/StimaTest/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/irvin/.config/NuGet/NuGet.Config"
+        "/Users/shifa/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
