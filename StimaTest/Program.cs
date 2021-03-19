@@ -42,30 +42,37 @@ namespace Main
             BFS A = new BFS();
             List<string> resultBFS = A.SolverBFS("C5", "C3", g, ids);
 
-            //tes aja
-            Console.Write("BFS : ");
-            foreach (string id in resultBFS)
+            //tes BFS
+            if (resultBFS == null) { Console.WriteLine("Tidak ada jalur pertemanan"); }
+            else
             {
-                string printout = $"{id} ";
-                Console.Write(printout);
+                Console.Write("BFS : ");
+                foreach (string id in resultBFS)
+                {
+                    string printout = $"{id} ";
+                    Console.Write(printout);
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
-
 
             //---------------------- DFS Driver ------------------------
             //DFS
             DFS B = new DFS();
             List<string> resultDFS = B.SolverDFS("C5", "C3", g, ids);
 
-            //tes aja
-            Console.Write("DFS : ");
-            foreach(string id in resultDFS)
+            //tes DFS
+            if (resultDFS == null) { Console.WriteLine("Tidak ada jalur pertemanan"); }
+            else
             {
-                //tes aja
-                string printout = $"{id} ";
-                Console.Write(printout);
+                Console.Write("DFS : ");
+                foreach (string id in resultDFS)
+                {
+                    //tes aja
+                    string printout = $"{id} ";
+                    Console.Write(printout);
+                }
+                Console.WriteLine();
             }
-            Console.WriteLine();
 
             Node cP = g.First;
             while (cP != null)

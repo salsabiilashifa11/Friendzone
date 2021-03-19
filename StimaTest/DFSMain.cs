@@ -58,7 +58,8 @@ namespace DFSMain
                     temp.visited = false;
                 }
             }
-            return jalurPertemanan;
+            if (friendFound) { return jalurPertemanan; }
+            else { return null; }
         }
     }
 }
