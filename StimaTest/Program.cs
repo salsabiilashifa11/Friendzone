@@ -37,14 +37,35 @@ namespace Main
             g.InsertEdge("C2", "C1");
             //g.DeleteNode("C1");
 
+            //---------------------- BFS Driver ------------------------
             //BFS
             BFS A = new BFS();
-            A.SolverBFS("C5", "C3", g, ids);
+            List<string> resultBFS = A.SolverBFS("C5", "C3", g, ids);
 
+            //tes aja
+            Console.Write("BFS : ");
+            foreach (string id in resultBFS)
+            {
+                string printout = $"{id} ";
+                Console.Write(printout);
+            }
+            Console.WriteLine();
+
+
+            //---------------------- DFS Driver ------------------------
             //DFS
             DFS B = new DFS();
-            B.SolverDFS("C5", "C3", g, ids);
+            List<string> resultDFS = B.SolverDFS("C5", "C3", g, ids);
 
+            //tes aja
+            Console.Write("DFS : ");
+            foreach(string id in resultDFS)
+            {
+                //tes aja
+                string printout = $"{id} ";
+                Console.Write(printout);
+            }
+            Console.WriteLine();
 
             Node cP = g.First;
             while (cP != null)

@@ -1,23 +1,22 @@
 ﻿using System;
 using StackMain;
 using GraphMain;
+using System.Collections.Generic;
 
 namespace DFSMain
 {
     public class DFS
     {
-        public void SolverDFS(string X, string Y, Graph G, string[] arrOfGraph)
+        public List<string> SolverDFS(string X, string Y, Graph G, string[] arrOfGraph)
         {
             Node start = G.SearchNode(X); //mencari node yang id-nya = X
             Node finish = G.SearchNode(Y);
             Stack dfsStack = new Stack(); //Stack untuk DFS
             bool friendFound = false;
+            var jalurPertemanan = new List<string>(); //return value
 
             if (start != null && finish != null) //Pastikan yang dicari ada di dalam graph
             {
-                //Console.Write(X);
-                //start.visited = true; //Tandai node yang sudah dikunjungi
-
                 dfsStack.Push(start); //Tambahkan node pertama ke Stack
 
                 while (!(dfsStack.IsEmpty()) && !friendFound)
@@ -26,20 +25,11 @@ namespace DFSMain
                     dfsStack.Pop(); //Pop Node yang akan dikunjungi
                     if (!(Visit.visited))
                     {
-                        if (Visit.Id == start.Id)
-                        {
-                            Console.Write(Visit.Id);
-                        }
-                        else
-                        {
-                            string result = $" --> {Visit.Id}";
-                            Console.Write(result);
-                        }
+                        jalurPertemanan.Add(Visit.Id);
                         Visit.visited = true;
                     }
                     if (Visit.Id == finish.Id)
                     {
-                        Console.WriteLine();
                         friendFound = true;
                     }
 
@@ -61,19 +51,14 @@ namespace DFSMain
                     }
                 }
 
-                //Reset visited = false
+                //Reset bool visited = false
                 for (int i = 0; i < arrOfGraph.Length; i++)
                 {
                     Node temp = G.SearchNode(arrOfGraph[i]);
                     temp.visited = false;
                 }
             }
-
-            //Tidak ditemukan jalur pertemanan atau teman tidak terdaftar dalam graph Friendzone
-            if (!friendFound)
-            {
-                Console.WriteLine("Tidak ada jalur pertemanan");
-            }
+            return jalurPertemanan;
         }
     }
 }
