@@ -6,13 +6,15 @@ namespace StimaTest
 {
     public class ExploreFriendsBFS
     {
-        public List<string> SolverBFS(string X, string Y, Graph G, string[] arrOfGraph)
+        public List<string> SolverBFS(string X, string Y, Graph G)
         {
             Node start = G.SearchNode(X); //mencari node yang id-nya = X
             Node finish = G.SearchNode(Y);
             Queue bfsQueue = new Queue(); //Queue untuk BFS
             bool friendFound = false;
             List<string> jalurPertemanan = new List<string>(); //return value
+            List<string> adjId = new List<string>(); // list untuk menyimpan id adjacent node dari sebuah node
+            List<Node> allVisitedNode = new List<Node>(); // list untuk menyimpan semua node yang pernah dikunjungi
             
 
             if (start != null && finish != null) //Pastikan yang dicari ada di dalam graph
@@ -20,6 +22,7 @@ namespace StimaTest
                 jalurPertemanan.Add(start.Id);
 
                 start.visited = true; //Tandai node yang sudah dikunjungi
+                allVisitedNode.Add(start);
 
                 bfsQueue.Enqueue(start); //Tambahkan node pertama ke Queue
 
@@ -28,34 +31,36 @@ namespace StimaTest
                     Node Visit = bfsQueue.InfoHead; //Node yang sedang dikunjungi
                     bfsQueue.Dequeue();//Dequeue Node yang dikunjungi
 
-                    for (int i = 0; i < arrOfGraph.Length; i++) //Loop pencarian Node yang bertetangga dengan node "Visit"
+                    SuccNode adjacent = Visit.Trail;
+                    while(adjacent != null)
                     {
-                        if (arrOfGraph[i] != Visit.Id)
+                        adjId.Add(adjacent.Succ.Id);
+                        adjacent = adjacent.NextT;
+                    }
+
+                    adjId.Sort();
+                    foreach(string adj in adjId)
+                    {
+                        Node NextVisit = G.SearchNode(adj);
+                        if (!(NextVisit.visited))
                         {
-                            if (G.SearchEdge(Visit.Id, arrOfGraph[i]) != null) //Ketemu node yang bertetangga
+                            jalurPertemanan.Add(NextVisit.Id);
+                            bfsQueue.Enqueue(NextVisit);
+                            NextVisit.visited = true;
+                            allVisitedNode.Add(NextVisit);
+
+                            if(NextVisit.Id == finish.Id)
                             {
-                                Node NextVisit = G.SearchNode(arrOfGraph[i]);
-                                if (!(NextVisit.visited)) //Node tetangga belum pernah dikunjungi
-                                {
-                                    jalurPertemanan.Add(NextVisit.Id);
-                                    bfsQueue.Enqueue(NextVisit); //Tambahkan Node tetangga ke Queue
-                                    NextVisit.visited = true;
-                                    if (NextVisit.Id == finish.Id)
-                                    {
-                                        friendFound = true; //Ketemu Node yang dituju
-                                        break;
-                                    }
-                                }
+                                friendFound = true;
+                                break;
                             }
                         }
                     }
                 }
-
                 //Reset bool visited = false
-                for (int i = 0; i < arrOfGraph.Length; i++)
+                foreach(Node visitedNode in allVisitedNode)
                 {
-                    Node temp = G.SearchNode(arrOfGraph[i]);
-                    temp.visited = false;
+                    visitedNode.visited = false;
                 }
             }
             if (friendFound) { return jalurPertemanan; }

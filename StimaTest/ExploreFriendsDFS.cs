@@ -6,13 +6,16 @@ namespace StimaTest
 {
     public class ExploreFriendsDFS
     {
-        public List<string> SolverDFS(string X, string Y, Graph G, string[] arrOfGraph)
+        public List<string> SolverDFS(string X, string Y, Graph G)
         {
             Node start = G.SearchNode(X); //mencari node yang id-nya = X
             Node finish = G.SearchNode(Y);
             Stack dfsStack = new Stack(); //Stack untuk DFS
             bool friendFound = false;
-            var jalurPertemanan = new List<string>(); //return value
+            List<string> jalurPertemanan = new List<string>(); //return value
+            List<string> adjId = new List<string>(); // list untuk menyimpan id dari adjacent node
+            List<Node> allVisitedNode = new List<Node>(); // list untuk menyimpan semua node yang pernah dikunjungi
+
 
             if (start != null && finish != null) //Pastikan yang dicari ada di dalam graph
             {
@@ -25,6 +28,7 @@ namespace StimaTest
                     if (!(Visit.visited))
                     {
                         jalurPertemanan.Add(Visit.Id);
+                        allVisitedNode.Add(Visit);
                         Visit.visited = true;
                     }
                     if (Visit.Id == finish.Id)
@@ -32,29 +36,28 @@ namespace StimaTest
                         friendFound = true;
                     }
 
-                    //Loop dimulai dari belakang supaya prioritas tetap sesuai berdasarkan abjad
-                    //jadi yang disort tinggal arraynya aja buat menuhin syarat prioritas
-                    for (int i = arrOfGraph.Length-1; i > -1; i--) //Loop pencarian Node yang bertetangga dengan node "Visit"
+                    SuccNode adjacent = Visit.Trail;
+                    while (adjacent != null)
                     {
-                        if (arrOfGraph[i] != Visit.Id)
+                        adjId.Add(adjacent.Succ.Id);
+                        adjacent = adjacent.NextT;
+                    }
+
+                    adjId.Sort();
+                    adjId.Reverse();
+                    foreach(string adj in adjId)
+                    {
+                        Node NextVisit = G.SearchNode(adj);
+                        if (!(NextVisit.visited))
                         {
-                            if (G.SearchEdge(Visit.Id, arrOfGraph[i]) != null) //Ketemu node yang bertetangga
-                            {
-                                Node NextVisit = G.SearchNode(arrOfGraph[i]);
-                                if (!(NextVisit.visited)) //Node tetangga belum pernah dikunjungi
-                                {
-                                    dfsStack.Push(NextVisit); //Tambahkan Node tetangga ke Stack
-                                }
-                            }
+                            dfsStack.Push(NextVisit);
                         }
                     }
                 }
-
                 //Reset bool visited = false
-                for (int i = 0; i < arrOfGraph.Length; i++)
+                foreach(Node visitedNode in allVisitedNode)
                 {
-                    Node temp = G.SearchNode(arrOfGraph[i]);
-                    temp.visited = false;
+                    visitedNode.visited = false;
                 }
             }
             if (friendFound) { return jalurPertemanan; }

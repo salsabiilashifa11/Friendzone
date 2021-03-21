@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "/Users/shifa/.dotnet/store/|arch|/|tfm|",
-      "/Users/shifa/.nuget/packages"
+      "/Users/irvin/.dotnet/store/|arch|/|tfm|",
+      "/Users/irvin/.nuget/packages"
     ]
   }
 }
